@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 // Set base to '/splitsia/' for GitHub Pages; change to '/' for custom domains.
 export default defineConfig({
   plugins: [react()],
-  base: '/SplitSia/',
+  base: '/splitsia/',
   optimizeDeps: {
     // Exclude WASM-backed packages — onnxruntime-web registers WASM backends
     // at import time and breaks when Vite's CJS-to-ESM shim wraps it.

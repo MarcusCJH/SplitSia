@@ -84,7 +84,7 @@ ReceiptSession
 npm run deploy   # builds then pushes dist/ to the gh-pages branch
 ```
 
-Update `base` in `vite.config.ts` and `start_url` / `scope` in `public/manifest.json` if the repo name changes.
+Repo is `MarcusCJH/splitsia` (all lowercase). Update `base` in `vite.config.ts` and `start_url` / `scope` in `public/manifest.json` if the repo name changes.
 
 ## Local Development
 
