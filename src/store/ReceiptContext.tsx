@@ -5,8 +5,8 @@ import { saveDraft, loadDraft, clearDraft, generateId } from '../utils/storage'
 import { recalcReceiptTotals } from '../utils/split'
 
 const PERSON_COLORS = [
-  '#6C63FF', '#FF6584', '#43C6AC', '#F7971E',
-  '#4ECDC4', '#FF6B6B', '#A18AFF', '#FEB17E',
+  '#15803D', '#D97706', '#2563EB', '#DC2626',
+  '#9333EA', '#0D9488', '#EA580C', '#DB2777',
 ]
 
 /** Pre-seeded charges on every new session (Singapore defaults). */

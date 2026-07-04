@@ -40,9 +40,18 @@ export default function BottomNav() {
 function BrandIcon() {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-      <path d="M2 17l10 5 10-5"/>
-      <path d="M2 12l10 5 10-5"/>
+      {/* Receipt outline */}
+      <rect x="4" y="2" width="16" height="20" rx="2"/>
+      {/* Dashed vertical split */}
+      <line x1="12" y1="5" x2="12" y2="19" strokeDasharray="2 1.5"/>
+      {/* Left column items */}
+      <line x1="6" y1="8"  x2="10" y2="8"/>
+      <line x1="6" y1="12" x2="10" y2="12"/>
+      <line x1="6" y1="16" x2="9"  y2="16"/>
+      {/* Right column items */}
+      <line x1="14" y1="8"  x2="18" y2="8"/>
+      <line x1="14" y1="12" x2="18" y2="12"/>
+      <line x1="15" y1="16" x2="18" y2="16"/>
     </svg>
   )
 }

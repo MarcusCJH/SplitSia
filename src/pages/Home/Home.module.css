@@ -26,22 +26,23 @@
 .heroLogo {
   width: 72px;
   height: 72px;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(150deg, #16A34A 0%, #14532D 100%);
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  box-shadow: var(--shadow-md), 0 0 0 6px rgba(108,99,255,0.15);
+  color: #fff;
+  box-shadow: var(--shadow-md), 0 0 0 6px rgba(217,119,6,0.20);
   margin-bottom: 0.25rem;
 }
 
 .heroTitle {
-  font-size: 2rem;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 2.25rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .heroSub {

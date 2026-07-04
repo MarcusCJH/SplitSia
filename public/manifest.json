@@ -6,8 +6,8 @@
   "scope": "/splitsia/",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#6C63FF",
-  "background_color": "#F4F3FF",
+  "theme_color": "#15803D",
+  "background_color": "#FAFAF9",
   "icons": [
     {
       "src": "/splitsia/icon-192.png",

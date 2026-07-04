@@ -90,8 +90,8 @@ export const SAMPLE_SESSION: SplitSession = {
   },
 
   people: [
-    { id: 'p1', name: 'Alice', color: '#6C63FF' },
-    { id: 'p2', name: 'Bob',   color: '#FF6584' },
+    { id: 'p1', name: 'Alice', color: '#15803D' },
+    { id: 'p2', name: 'Bob',   color: '#D97706' },
     { id: 'p3', name: 'Carol', color: '#43C6AC' },
     { id: 'p4', name: 'Dave',  color: '#F7971E' },
   ],
@@ -146,8 +146,8 @@ export const SAMPLE_SESSION_EQUAL: SplitSession = {
     total: 27.69,
   },
   people: [
-    { id: 'u1', name: 'Marcus', color: '#6C63FF' },
-    { id: 'u2', name: 'Jamie',  color: '#FF6584' },
+    { id: 'u1', name: 'Marcus', color: '#15803D' },
+    { id: 'u2', name: 'Jamie',  color: '#D97706' },
   ],
   assignments: [
     { itemId: 'c1', personIds: ['u1'] },
