@@ -7,6 +7,55 @@
   animation: fadeSlideIn 0.25s ease-out both;
 }
 
+/* Mobile: col wrappers are transparent to the flex layout */
+.leftCol,
+.rightCol {
+  display: contents;
+}
+
+/* ── Desktop: two-column grid ─────────────────────────────────────── */
+@media (min-width: 768px) {
+  .page {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    grid-template-rows: auto 1fr;
+    column-gap: 2rem;
+    row-gap: 0;
+    padding: 2rem 2.5rem;
+    max-width: 1100px;
+    align-items: start;
+  }
+
+  /* Header spans both columns */
+  .header {
+    grid-column: 1 / -1;
+    margin-bottom: 0.25rem;
+  }
+
+  .leftCol {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .rightCol {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  /* CTA is no longer a sticky gradient strip on desktop */
+  .stickyCta {
+    position: static;
+    background: transparent;
+    padding: 0;
+    margin-top: 0;
+  }
+}
+
 /* ── Header ───────────────────────────────────────────────────────── */
 .header {
   display: flex;

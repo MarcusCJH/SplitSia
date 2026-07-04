@@ -6,6 +6,14 @@
   animation: fadeSlideIn 0.3s ease-out both;
 }
 
+@media (min-width: 768px) {
+  .page {
+    max-width: 680px;
+    padding: 2rem 2.5rem;
+    margin: 0 auto;
+  }
+}
+
 /* ── Hero ─────────────────────────────────────────────────────────── */
 .hero {
   display: flex;

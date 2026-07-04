@@ -25,6 +25,7 @@
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --nav-height: 68px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --sidebar-width: 220px;
   --transition-base: 0.18s ease;
   --color-warning: #F7971E;
 }

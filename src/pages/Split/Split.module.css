@@ -7,6 +7,47 @@
   animation: fadeSlideIn 0.25s ease-out both;
 }
 
+/* Mobile: col wrappers are transparent to the flex layout */
+.leftCol,
+.rightCol {
+  display: contents;
+}
+
+/* ── Desktop: two-column grid ─────────────────────────────────────── */
+@media (min-width: 768px) {
+  .page {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 2rem;
+    padding: 2rem 2.5rem;
+    max-width: 1200px;
+    align-items: start;
+  }
+
+  .leftCol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  .rightCol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 0;
+  }
+
+  /* CTA becomes a plain button at the bottom of the left panel */
+  .stickyCta {
+    position: static;
+    background: transparent;
+    padding: 0;
+    margin-top: 0;
+  }
+}
+
 /* ── Header ───────────────────────────────────────────────────────── */
 .header {
   display: flex;

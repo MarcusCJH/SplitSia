@@ -11,25 +11,42 @@ const NAV_ITEMS = [
 
 export default function BottomNav() {
   return (
-    <nav className={styles.nav} aria-label="Main navigation">
-      {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
-        <NavLink
-          key={to}
-          to={to}
-          end={to === '/'}
-          className={({ isActive }) =>
-            [styles.item, isActive ? styles.active : ''].join(' ')
-          }
-        >
-          <span className={styles.icon}><Icon /></span>
-          <span className={styles.label}>{label}</span>
-        </NavLink>
-      ))}
-    </nav>
+    <div className={styles.wrapper}>
+      <div className={styles.brand} aria-hidden="true">
+        <BrandIcon />
+        <span>SplitSia</span>
+      </div>
+      <nav className={styles.nav} aria-label="Main navigation">
+        {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={to === '/'}
+            className={({ isActive }) =>
+              [styles.item, isActive ? styles.active : ''].join(' ')
+            }
+          >
+            <span className={styles.icon}><Icon /></span>
+            <span className={styles.label}>{label}</span>
+          </NavLink>
+        ))}
+      </nav>
+    </div>
   )
 }
 
 /* ── Inline SVG icons ─────────────────────────────────────────────── */
+
+function BrandIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </svg>
+  )
+}
+
 function HomeIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

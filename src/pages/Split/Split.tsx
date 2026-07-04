@@ -99,97 +99,100 @@ export default function Split() {
   return (
     <div className={styles.page}>
 
-      {/* ── Header ─────────────────────────────────────────────────── */}
-      <header className={styles.header}>
-        <h1 className={styles.title}>Split Bill</h1>
-        {receipt.merchant
-          ? <p className={styles.merchant}>{receipt.merchant}</p>
-          : <p className={styles.sub}>Add people, then assign each item.</p>
-        }
-      </header>
+      {/* ── Left col on desktop: people + controls ──────────────────── */}
+      <div className={styles.leftCol}>
 
-      {/* ── Split mode toggle ───────────────────────────────────────── */}
-      <div className={styles.modeToggle}>
-        <button
-          className={`${styles.modeBtn} ${draft.splitMode === 'itemized' ? styles.modeBtnActive : ''}`}
-          onClick={() => dispatch({ type: 'SET_SPLIT_MODE', payload: 'itemized' })}
-        >
-          By item
-        </button>
-        <button
-          className={`${styles.modeBtn} ${draft.splitMode === 'equal' ? styles.modeBtnActive : ''}`}
-          onClick={() => dispatch({ type: 'SET_SPLIT_MODE', payload: 'equal' })}
-        >
-          Equal split
-        </button>
-      </div>
+        <header className={styles.header}>
+          <h1 className={styles.title}>Split Bill</h1>
+          {receipt.merchant
+            ? <p className={styles.merchant}>{receipt.merchant}</p>
+            : <p className={styles.sub}>Add people, then assign each item.</p>
+          }
+        </header>
 
-      {/* ── People roster ──────────────────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>People</h2>
-          {people.length > 0 && (
-            <span className={styles.sectionBadge}>{people.length}</span>
-          )}
-        </div>
-
-        {people.length > 0 && (
-          <div className={styles.peopleRoster}>
-            {people.map((p) => (
-              <PersonCard
-                key={p.id}
-                person={p}
-                itemCount={personItemCounts.get(p.id) ?? 0}
-                subtotal={personSubtotals.get(p.id) ?? 0}
-                currency={receipt.currency}
-                onRemove={() => dispatch({ type: 'REMOVE_PERSON', payload: p.id })}
-              />
-            ))}
-          </div>
-        )}
-
-        <div className={styles.addPersonRow}>
-          <input
-            ref={inputRef}
-            className="input-field"
-            placeholder={people.length === 0 ? 'Type a name to get started…' : 'Add another person…'}
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && addPerson()}
-          />
+        <div className={styles.modeToggle}>
           <button
-            className="btn btn-primary"
-            onClick={addPerson}
-            disabled={!newName.trim()}
+            className={`${styles.modeBtn} ${draft.splitMode === 'itemized' ? styles.modeBtnActive : ''}`}
+            onClick={() => dispatch({ type: 'SET_SPLIT_MODE', payload: 'itemized' })}
           >
-            Add
+            By item
+          </button>
+          <button
+            className={`${styles.modeBtn} ${draft.splitMode === 'equal' ? styles.modeBtnActive : ''}`}
+            onClick={() => dispatch({ type: 'SET_SPLIT_MODE', payload: 'equal' })}
+          >
+            Equal split
           </button>
         </div>
-      </section>
 
-      {/* ── Item assignment ─────────────────────────────────────────── */}
-      <AssignItemsView
-        draft={draft}
-        totalItems={totalItems}
-        assignedCount={assignedCount}
-        allDone={allDone}
-        getAssignedPersonIds={getAssignedPersonIds}
-        toggleAssign={toggleAssign}
-        assignAll={assignAll}
-        clearItem={clearItem}
-        splitAllEqually={splitAllEqually}
-        navigate={navigate}
-      />
+        <section>
+          <div className={styles.sectionHead}>
+            <h2 className={styles.sectionTitle}>People</h2>
+            {people.length > 0 && (
+              <span className={styles.sectionBadge}>{people.length}</span>
+            )}
+          </div>
 
-      {/* ── CTA ────────────────────────────────────────────────────── */}
-      <div className={styles.stickyCta}>
-        <button
-          className="btn btn-primary btn-full"
-          disabled={!canContinue}
-          onClick={() => navigate('/result')}
-        >
-          See Results &rarr;
-        </button>
+          {people.length > 0 && (
+            <div className={styles.peopleRoster}>
+              {people.map((p) => (
+                <PersonCard
+                  key={p.id}
+                  person={p}
+                  itemCount={personItemCounts.get(p.id) ?? 0}
+                  subtotal={personSubtotals.get(p.id) ?? 0}
+                  currency={receipt.currency}
+                  onRemove={() => dispatch({ type: 'REMOVE_PERSON', payload: p.id })}
+                />
+              ))}
+            </div>
+          )}
+
+          <div className={styles.addPersonRow}>
+            <input
+              ref={inputRef}
+              className="input-field"
+              placeholder={people.length === 0 ? 'Type a name to get started…' : 'Add another person…'}
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && addPerson()}
+            />
+            <button
+              className="btn btn-primary"
+              onClick={addPerson}
+              disabled={!newName.trim()}
+            >
+              Add
+            </button>
+          </div>
+        </section>
+
+        <div className={styles.stickyCta}>
+          <button
+            className="btn btn-primary btn-full"
+            disabled={!canContinue}
+            onClick={() => navigate('/result')}
+          >
+            See Results &rarr;
+          </button>
+        </div>
+
+      </div>
+
+      {/* ── Right col on desktop: item assignment ───────────────────── */}
+      <div className={styles.rightCol}>
+        <AssignItemsView
+          draft={draft}
+          totalItems={totalItems}
+          assignedCount={assignedCount}
+          allDone={allDone}
+          getAssignedPersonIds={getAssignedPersonIds}
+          toggleAssign={toggleAssign}
+          assignAll={assignAll}
+          clearItem={clearItem}
+          splitAllEqually={splitAllEqually}
+          navigate={navigate}
+        />
       </div>
 
     </div>

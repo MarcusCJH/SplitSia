@@ -36,7 +36,7 @@ export default function Review() {
   return (
     <div className={styles.page}>
 
-      {/* ── Header ─────────────────────────────────────────────────── */}
+      {/* ── Header — spans full width on desktop ───────────────────── */}
       <header className={styles.header}>
         <h1 className={styles.title}>Review Items</h1>
         <MerchantInput
@@ -47,68 +47,70 @@ export default function Review() {
         />
       </header>
 
-      {/* ── Items ──────────────────────────────────────────────────── */}
-      <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>Items</h2>
-          {receipt.items.length > 0 && (
-            <span className={styles.sectionBadge}>{receipt.items.length}</span>
-          )}
-        </div>
-
-        {receipt.items.length === 0 ? (
-          <div className={`${styles.emptyItems} card`}>
-            <span className={styles.emptyIcon}>🛒</span>
-            <p>No items yet.</p>
-            <p className={styles.emptyHint}>Tap "Add Item" to start building the receipt.</p>
+      {/* ── Left col on desktop: items list ────────────────────────── */}
+      <div className={styles.leftCol}>
+        <section className={styles.section}>
+          <div className={styles.sectionHead}>
+            <h2 className={styles.sectionTitle}>Items</h2>
+            {receipt.items.length > 0 && (
+              <span className={styles.sectionBadge}>{receipt.items.length}</span>
+            )}
           </div>
-        ) : (
-          <ul className={styles.itemList}>
-            {receipt.items.map((item) => (
-              <ItemCard
-                key={item.id}
-                item={item}
-                isEditing={editingId === item.id}
-                currency={receipt.currency}
-                onTap={() => setEditingId(item.id)}
-                onSave={(updated) => {
-                  dispatch({ type: 'UPDATE_ITEM', payload: updated })
-                  setEditingId(null)
-                }}
-                onDelete={() => {
-                  dispatch({ type: 'DELETE_ITEM', payload: item.id })
-                  setEditingId(null)
-                }}
-                onCancel={() => setEditingId(null)}
-              />
-            ))}
-          </ul>
-        )}
 
-        <button className={`btn btn-secondary btn-full ${styles.addItemBtn}`} onClick={addItem}>
-          <PlusIcon /> Add Item
-        </button>
-      </section>
+          {receipt.items.length === 0 ? (
+            <div className={`${styles.emptyItems} card`}>
+              <span className={styles.emptyIcon}>🛒</span>
+              <p>No items yet.</p>
+              <p className={styles.emptyHint}>Tap "Add Item" to start building the receipt.</p>
+            </div>
+          ) : (
+            <ul className={styles.itemList}>
+              {receipt.items.map((item) => (
+                <ItemCard
+                  key={item.id}
+                  item={item}
+                  isEditing={editingId === item.id}
+                  currency={receipt.currency}
+                  onTap={() => setEditingId(item.id)}
+                  onSave={(updated) => {
+                    dispatch({ type: 'UPDATE_ITEM', payload: updated })
+                    setEditingId(null)
+                  }}
+                  onDelete={() => {
+                    dispatch({ type: 'DELETE_ITEM', payload: item.id })
+                    setEditingId(null)
+                  }}
+                  onCancel={() => setEditingId(null)}
+                />
+              ))}
+            </ul>
+          )}
 
-      {/* ── Charges ────────────────────────────────────────────────── */}
-      <ChargesPanel
-        charges={receipt.charges}
-        subtotal={receipt.subtotal}
-        dispatch={dispatch}
-      />
+          <button className={`btn btn-secondary btn-full ${styles.addItemBtn}`} onClick={addItem}>
+            <PlusIcon /> Add Item
+          </button>
+        </section>
+      </div>
 
-      {/* ── Total summary ──────────────────────────────────────────── */}
-      <TotalSummary receipt={receipt} />
+      {/* ── Right col on desktop: charges + total + CTA ────────────── */}
+      <div className={styles.rightCol}>
+        <ChargesPanel
+          charges={receipt.charges}
+          subtotal={receipt.subtotal}
+          dispatch={dispatch}
+        />
 
-      {/* ── CTA ────────────────────────────────────────────────────── */}
-      <div className={styles.stickyCta}>
-        <button
-          className="btn btn-primary btn-full"
-          disabled={receipt.items.length === 0}
-          onClick={() => navigate('/split')}
-        >
-          Continue to Split &rarr;
-        </button>
+        <TotalSummary receipt={receipt} />
+
+        <div className={styles.stickyCta}>
+          <button
+            className="btn btn-primary btn-full"
+            disabled={receipt.items.length === 0}
+            onClick={() => navigate('/split')}
+          >
+            Continue to Split &rarr;
+          </button>
+        </div>
       </div>
 
     </div>

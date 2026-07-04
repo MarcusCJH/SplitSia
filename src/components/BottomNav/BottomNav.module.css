@@ -1,3 +1,12 @@
+/* ── Mobile: wrapper is transparent, nav is fixed bottom ─────────── */
+.wrapper {
+  /* pass-through on mobile */
+}
+
+.brand {
+  display: none;
+}
+
 .nav {
   position: fixed;
   bottom: 0;
@@ -67,4 +76,82 @@
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.01em;
+}
+
+/* ── Desktop: sidebar ─────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    box-shadow: 2px 0 16px rgba(108,99,255,.07);
+    z-index: 100;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 1.5rem 1.25rem 1.125rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .nav {
+    position: static;
+    width: auto;
+    height: auto;
+    border-top: none;
+    box-shadow: none;
+    background: transparent;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0.75rem 0;
+    flex: 1;
+    overflow-y: auto;
+    gap: 0.15rem;
+  }
+
+  .item {
+    flex: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.65rem 1rem;
+    gap: 0.75rem;
+    border-radius: var(--radius-md);
+    margin: 0 0.5rem;
+    border-left: none;
+  }
+
+  /* hide the top-bar indicator on desktop */
+  .item::before {
+    display: none;
+  }
+
+  .item.active {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .item.active .icon {
+    background: transparent;
+    transform: none;
+  }
+
+  .label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
 }
